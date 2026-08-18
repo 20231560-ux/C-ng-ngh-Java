@@ -1,0 +1,7 @@
+package vn.edu.eaut.lab7.controller;
+import jakarta.servlet.*;import jakarta.servlet.annotation.WebServlet;import jakarta.servlet.http.*;import java.io.*;import vn.edu.eaut.lab7.model.SinhVien;import vn.edu.eaut.lab7.repository.SinhVienRepository;
+@WebServlet("/sinh-vien") public class SinhVienController extends HttpServlet{
+ private final SinhVienRepository r=new SinhVienRepository();
+ protected void doGet(HttpServletRequest q,HttpServletResponse p)throws ServletException,IOException{q.setCharacterEncoding("UTF-8");String a=q.getParameter("action");if("new".equals(a)){q.getRequestDispatcher("/views/sinhvien/form.jsp").forward(q,p);return;}if("edit".equals(a)||"detail".equals(a)){q.setAttribute("sv",r.findById(Integer.parseInt(q.getParameter("id"))));q.getRequestDispatcher("detail".equals(a)?"/views/sinhvien/detail.jsp":"/views/sinhvien/form.jsp").forward(q,p);return;}if("delete".equals(a)){r.delete(Integer.parseInt(q.getParameter("id")));p.sendRedirect(q.getContextPath()+"/sinh-vien");return;}q.setAttribute("dsSinhVien",r.search(q.getParameter("keyword")));q.getRequestDispatcher("/views/sinhvien/list.jsp").forward(q,p);}
+ protected void doPost(HttpServletRequest q,HttpServletResponse p)throws IOException{q.setCharacterEncoding("UTF-8");String id=q.getParameter("id");SinhVien x=new SinhVien(id==null||id.isBlank()?0:Integer.parseInt(id),q.getParameter("maSinhVien"),q.getParameter("hoTen"),q.getParameter("email"),q.getParameter("lop"));if(x.getId()==0)r.add(x);else r.update(x);p.sendRedirect(q.getContextPath()+"/sinh-vien");}
+}
