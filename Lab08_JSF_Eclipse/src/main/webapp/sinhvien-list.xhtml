@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head><title>Danh sách sinh viên JSF</title></h:head>
+<h:body>
+<h2>Danh sách sinh viên</h2>
+<h:messages globalOnly="true" style="color:green"/>
+<h:form>
+<h:dataTable value="#{sinhVienBean.dsSinhVien}" var="sv" border="1" cellpadding="6">
+<h:column><f:facet name="header">ID</f:facet>#{sv.id}</h:column>
+<h:column><f:facet name="header">Mã SV</f:facet>#{sv.maSinhVien}</h:column>
+<h:column><f:facet name="header">Họ tên</f:facet>#{sv.hoTen}</h:column>
+<h:column><f:facet name="header">Email</f:facet>#{sv.email}</h:column>
+<h:column><f:facet name="header">Lớp</f:facet>#{sv.lop}</h:column>
+<h:column><f:facet name="header">Thao tác</f:facet>
+<h:commandButton value="Xóa" action="#{sinhVienBean.delete(sv.id)}"/>
+</h:column>
+</h:dataTable>
+</h:form>
+<p><h:link outcome="sinhvien-form" value="Thêm sinh viên"/></p>
+</h:body>
+</html>

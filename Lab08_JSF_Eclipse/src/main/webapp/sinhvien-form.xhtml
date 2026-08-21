@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html">
+<h:head><title>Form sinh viên JSF</title></h:head>
+<h:body>
+<h2>Form sinh viên bằng JSF</h2>
+<h:messages globalOnly="true" style="color:green"/>
+<h:form>
+<p>Mã SV:
+<h:inputText id="ma" value="#{sinhVienBean.sinhVien.maSinhVien}" required="true"
+ requiredMessage="Mã sinh viên bắt buộc nhập"/>
+<h:message for="ma" style="color:red"/>
+</p>
+<p>Họ tên:
+<h:inputText id="hoten" value="#{sinhVienBean.sinhVien.hoTen}" required="true"
+ requiredMessage="Họ tên bắt buộc nhập"/>
+<h:message for="hoten" style="color:red"/>
+</p>
+<p>Email:
+<h:inputText id="email" value="#{sinhVienBean.sinhVien.email}"/>
+<h:message for="email" style="color:red"/>
+</p>
+<p>Lớp:
+<h:inputText id="lop" value="#{sinhVienBean.sinhVien.lop}" required="true"
+ requiredMessage="Lớp bắt buộc nhập"/>
+<h:message for="lop" style="color:red"/>
+</p>
+<h:commandButton value="Lưu sinh viên" action="#{sinhVienBean.save}"/>
+</h:form>
+<p><h:link outcome="sinhvien-list" value="Xem danh sách"/></p>
+</h:body>
+</html>
