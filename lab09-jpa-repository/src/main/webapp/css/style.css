@@ -1,0 +1,70 @@
+* { box-sizing: border-box; }
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    color: #222;
+}
+header {
+    background: #0d47a1;
+    color: #fff;
+    padding: 16px 24px;
+}
+header h1 { margin: 0; font-size: 20px; }
+nav { margin-top: 8px; }
+nav a {
+    color: #e3f2fd;
+    text-decoration: none;
+    margin-right: 18px;
+    font-size: 14px;
+}
+nav a:hover { text-decoration: underline; }
+.container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #e0e0e0; text-align: left; font-size: 14px; }
+th { background: #eef2f7; }
+tr:hover td { background: #f9fbfd; }
+.btn {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+}
+.btn-primary { background: #1976d2; color: #fff; }
+.btn-edit { background: #fb8c00; color: #fff; }
+.btn-delete { background: #e53935; color: #fff; }
+.btn-secondary { background: #757575; color: #fff; }
+.form-group { margin-bottom: 14px; }
+label { display: block; margin-bottom: 4px; font-weight: 600; font-size: 13px; }
+input, select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.alert { padding: 10px 14px; border-radius: 5px; margin-bottom: 14px; font-size: 14px; }
+.alert-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+.alert-error { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+.search-bar { display: flex; gap: 8px; margin-bottom: 16px; }
+.search-bar input { flex: 1; }
+.pagination { margin-top: 14px; display: flex; gap: 6px; }
+.pagination a, .pagination span {
+    padding: 6px 12px; border: 1px solid #ccc; border-radius: 5px; text-decoration: none; color: #333; font-size: 13px;
+}
+.pagination .active { background: #1976d2; color: #fff; border-color: #1976d2; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; }
+.badge-gioi { background:#c8e6c9; color:#256029; }
+.badge-kha { background:#bbdefb; color:#0d47a1; }
+.badge-tb { background:#fff9c4; color:#795548; }
+.badge-yeu, .badge-kem { background:#ffcdd2; color:#b71c1c; }
