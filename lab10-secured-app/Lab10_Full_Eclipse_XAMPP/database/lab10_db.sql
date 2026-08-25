@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS lab10_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE lab10_db;
+CREATE TABLE IF NOT EXISTS users(id INT PRIMARY KEY AUTO_INCREMENT,email VARCHAR(100) UNIQUE NOT NULL,password VARCHAR(255) NOT NULL,full_name VARCHAR(100) NOT NULL,role VARCHAR(20) NOT NULL,active BOOLEAN DEFAULT TRUE);
+CREATE TABLE IF NOT EXISTS students(id INT PRIMARY KEY AUTO_INCREMENT,code VARCHAR(30) UNIQUE NOT NULL,full_name VARCHAR(100) NOT NULL,email VARCHAR(100),major VARCHAR(100));
+CREATE TABLE IF NOT EXISTS books(id INT PRIMARY KEY AUTO_INCREMENT,code VARCHAR(30) UNIQUE NOT NULL,title VARCHAR(150) NOT NULL,author VARCHAR(100),quantity INT DEFAULT 0);
+CREATE TABLE IF NOT EXISTS products(id INT PRIMARY KEY AUTO_INCREMENT,code VARCHAR(30) UNIQUE NOT NULL,name VARCHAR(150) NOT NULL,price DOUBLE DEFAULT 0,quantity INT DEFAULT 0);
+INSERT INTO users(email,password,full_name,role,active) SELECT 'admin@gmail.com','123456','Admin','ADMIN',1 WHERE NOT EXISTS(SELECT 1 FROM users WHERE email='admin@gmail.com');
+INSERT INTO users(email,password,full_name,role,active) SELECT 'staff@gmail.com','123456','Staff','STAFF',1 WHERE NOT EXISTS(SELECT 1 FROM users WHERE email='staff@gmail.com');
+INSERT INTO users(email,password,full_name,role,active) SELECT 'user@gmail.com','123456','User','USER',1 WHERE NOT EXISTS(SELECT 1 FROM users WHERE email='user@gmail.com');
+INSERT INTO students(code,full_name,email,major) SELECT 'SV001','Nguyen Van A','a@gmail.com','CNTT' WHERE NOT EXISTS(SELECT 1 FROM students WHERE code='SV001');
+INSERT INTO books(code,title,author,quantity) SELECT 'S001','Java Cơ bản','EAUT',10 WHERE NOT EXISTS(SELECT 1 FROM books WHERE code='S001');
+INSERT INTO products(code,name,price,quantity) SELECT 'P001','Laptop',15000000,5 WHERE NOT EXISTS(SELECT 1 FROM products WHERE code='P001');

@@ -1,0 +1,1 @@
+<%@ page contentType="text/html;charset=UTF-8" %><h1>500 - Lỗi máy chủ</h1><a href="${pageContext.request.contextPath}/dashboard.jsp">Dashboard</a>

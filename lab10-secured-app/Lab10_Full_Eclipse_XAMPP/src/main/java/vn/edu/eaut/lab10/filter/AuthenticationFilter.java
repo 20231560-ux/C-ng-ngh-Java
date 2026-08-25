@@ -1,0 +1,3 @@
+package vn.edu.eaut.lab10.filter;
+import java.io.*;import jakarta.servlet.*;import jakarta.servlet.annotation.*;import jakarta.servlet.http.*;
+@WebFilter(urlPatterns={"/admin/*","/staff/*","/user/*"}) public class AuthenticationFilter implements Filter{public void doFilter(ServletRequest a,ServletResponse b,FilterChain c)throws IOException,ServletException{HttpServletRequest q=(HttpServletRequest)a;HttpServletResponse p=(HttpServletResponse)b;HttpSession s=q.getSession(false);if(s==null||s.getAttribute("currentUser")==null){p.sendRedirect(q.getContextPath()+"/login.jsp");return;}c.doFilter(a,b);}}

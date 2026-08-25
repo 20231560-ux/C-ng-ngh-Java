@@ -1,0 +1,1 @@
+<%@ page contentType="text/html;charset=UTF-8" %><h1>403 - Không có quyền truy cập</h1><a href="${pageContext.request.contextPath}/dashboard.jsp">Dashboard</a>

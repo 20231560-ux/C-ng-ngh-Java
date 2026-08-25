@@ -1,0 +1,3 @@
+package vn.edu.eaut.lab10.listener;
+import jakarta.servlet.*;import jakarta.servlet.annotation.*;import jakarta.servlet.http.*;import java.time.*;import java.io.*;
+@WebListener public class AppListener implements HttpSessionListener{public void sessionCreated(HttpSessionEvent e){log("SESSION_CREATED "+e.getSession().getId());}public void sessionDestroyed(HttpSessionEvent e){log("SESSION_DESTROYED "+e.getSession().getId());}private void log(String s){try{String dir=System.getProperty("java.io.tmpdir");try(FileWriter w=new FileWriter(dir+"/lab10.log",true)){w.write(LocalDateTime.now()+" "+s+"\n");}}catch(Exception ignored){}}}
