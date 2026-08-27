@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liên hệ</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/students}">Students</a>
+        <a th:href="@{/courses}">Courses</a>
+        <a th:href="@{/contact}">Contact</a>
+    </nav>
+
+    <div class="container">
+        <h1>Thông tin liên hệ</h1>
+        <p><strong>Khoa:</strong> <span th:text="${faculty}"></span></p>
+        <p><strong>Bộ môn:</strong> <span th:text="${department}"></span></p>
+        <p><strong>Địa chỉ:</strong> <span th:text="${address}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${email}"></span></p>
+        <p><strong>Điện thoại:</strong> <span th:text="${phone}"></span></p>
+    </div>
+
+    <footer>Công nghệ Java - IT3242 - Lab 11</footer>
+</body>
+</html>
