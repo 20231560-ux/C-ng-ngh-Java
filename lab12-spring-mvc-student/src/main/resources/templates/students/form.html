@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${student.id} == null ? 'Thêm sinh viên' : 'Sửa sinh viên'"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${student.id} == null ? 'Thêm sinh viên' : 'Sửa sinh viên'"></h1>
+
+    <form th:action="@{/students/save}" th:object="${student}" method="post" class="student-form">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+            <label>Mã sinh viên</label>
+            <input type="text" th:field="*{studentCode}">
+            <span class="error" th:if="${#fields.hasErrors('studentCode')}" th:errors="*{studentCode}"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Họ tên</label>
+            <input type="text" th:field="*{fullName}">
+            <span class="error" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" th:field="*{email}">
+            <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Lớp</label>
+            <input type="text" th:field="*{className}">
+            <span class="error" th:if="${#fields.hasErrors('className')}" th:errors="*{className}"></span>
+        </div>
+
+        <button type="submit">Lưu</button>
+        <a th:href="@{/students}">Hủy</a>
+    </form>
+</div>
+</body>
+</html>
