@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lab 13 - Spring Data JPA</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header>
+    <h1>Lab 13 - Kết nối cơ sở dữ liệu với Spring Data JPA</h1>
+    <nav>
+        <a th:href="@{/}">Trang chủ</a>
+        <a th:href="@{/students}">Sinh viên</a>
+        <a th:href="@{/courses}">Môn học</a>
+        <a th:href="@{/h2-console}" target="_blank">H2 Console</a>
+    </nav>
+</header>
+<div class="container">
+    <div class="card">
+        <h2>Tổng quan</h2>
+        <p>Số sinh viên trong CSDL: <b th:text="${totalStudents}">0</b></p>
+        <p>Số môn học trong CSDL: <b th:text="${totalCourses}">0</b></p>
+        <p>
+            <a class="btn" th:href="@{/students}">Quản lý sinh viên</a>
+            <a class="btn btn-light" th:href="@{/courses}">Quản lý môn học</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

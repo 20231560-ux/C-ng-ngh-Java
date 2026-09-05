@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Danh sách sinh viên</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header>
+    <h1>Quản lý sinh viên</h1>
+    <nav>
+        <a th:href="@{/}">Trang chủ</a>
+        <a th:href="@{/students}">Sinh viên</a>
+        <a th:href="@{/courses}">Môn học</a>
+        <a th:href="@{/h2-console}" target="_blank">H2 Console</a>
+    </nav>
+</header>
+<div class="container">
+    <div class="card">
+        <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+        <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+
+        <div class="toolbar">
+            <a class="btn" th:href="@{/students/create}">+ Thêm sinh viên</a>
+            <form th:action="@{/students}" method="get" style="display:flex; gap:8px; flex:1;">
+                <input type="text" name="keyword" th:value="${keyword}" placeholder="Tìm theo họ tên..."/>
+                <button class="btn" type="submit">Tìm kiếm</button>
+                <a class="btn btn-light" th:href="@{/students}">Xóa lọc</a>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Mã SV</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Lớp</th>
+                <th>Thao tác</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="s : ${students}">
+                <td th:text="${s.id}">1</td>
+                <td th:text="${s.studentCode}">SV001</td>
+                <td th:text="${s.fullName}">Nguyễn Văn A</td>
+                <td th:text="${s.email}">a@eaut.edu.vn</td>
+                <td th:text="${s.className}">DHCNTT01</td>
+                <td>
+                    <a class="btn btn-light" th:href="@{'/students/edit/' + ${s.id}}">Sửa</a>
+                    <a class="btn btn-danger" th:href="@{'/students/delete/' + ${s.id}}"
+                       onclick="return confirm('Bạn chắc chắn muốn xóa sinh viên này?');">Xóa</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(students)}">
+                <td colspan="6" class="empty">Không có dữ liệu</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

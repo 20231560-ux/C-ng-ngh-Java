@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Danh sách môn học</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header>
+    <h1>Quản lý môn học</h1>
+    <nav>
+        <a th:href="@{/}">Trang chủ</a>
+        <a th:href="@{/students}">Sinh viên</a>
+        <a th:href="@{/courses}">Môn học</a>
+    </nav>
+</header>
+<div class="container">
+    <div class="card">
+        <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+        <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+
+        <div class="toolbar">
+            <a class="btn" th:href="@{/courses/create}">+ Thêm môn học</a>
+            <form th:action="@{/courses}" method="get" style="display:flex; gap:8px; flex:1;">
+                <input type="text" name="keyword" th:value="${keyword}" placeholder="Tìm theo tên môn..."/>
+                <button class="btn" type="submit">Tìm kiếm</button>
+                <a class="btn btn-light" th:href="@{/courses}">Xóa lọc</a>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Mã môn</th>
+                <th>Tên môn</th>
+                <th>Số tín chỉ</th>
+                <th>Thao tác</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${courses}">
+                <td th:text="${c.id}">1</td>
+                <td th:text="${c.courseCode}">IT3242</td>
+                <td th:text="${c.courseName}">Công nghệ Java</td>
+                <td th:text="${c.credits}">3</td>
+                <td>
+                    <a class="btn btn-light" th:href="@{'/courses/edit/' + ${c.id}}">Sửa</a>
+                    <a class="btn btn-danger" th:href="@{'/courses/delete/' + ${c.id}}"
+                       onclick="return confirm('Bạn chắc chắn muốn xóa môn học này?');">Xóa</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(courses)}">
+                <td colspan="5" class="empty">Không có dữ liệu</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+:root {
+    --primary: #1f4e9c;
+    --primary-dark: #163a75;
+    --danger: #c0392b;
+    --border: #dfe4ec;
+    --bg: #f5f7fb;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: #21293a;
+}
+header {
+    background: var(--primary);
+    color: #fff;
+    padding: 16px 24px;
+}
+header h1 { margin: 0 0 8px; font-size: 20px; }
+header nav a {
+    color: #d9e4f5;
+    text-decoration: none;
+    margin-right: 16px;
+    font-size: 14px;
+}
+header nav a:hover { color: #fff; text-decoration: underline; }
+.container {
+    max-width: 960px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+.card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+}
+h2 { margin-top: 0; font-size: 18px; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+th, td { padding: 10px; border-bottom: 1px solid var(--border); text-align: left; font-size: 14px; }
+th { background: #eef2f9; }
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+.btn:hover { background: var(--primary-dark); }
+.btn-danger { background: var(--danger); }
+.btn-light { background: #e6eaf2; color: #21293a; }
+.toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+input[type=text], input[type=email], input[type=number] {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100%;
+}
+.form-group { margin-bottom: 14px; }
+label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; }
+.error { color: var(--danger); font-size: 13px; margin-top: 4px; }
+.alert { padding: 10px 14px; border-radius: 6px; margin-bottom: 14px; font-size: 14px; }
+.alert-success { background: #e6f5ea; color: #1e7a3c; }
+.alert-error { background: #fdecea; color: var(--danger); }
+.empty { text-align: center; color: #7a869a; padding: 20px; }

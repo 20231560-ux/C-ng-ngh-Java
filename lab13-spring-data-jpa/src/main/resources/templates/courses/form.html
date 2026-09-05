@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${pageTitle}">Thêm môn học</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header>
+    <h1 th:text="${pageTitle}">Thêm môn học</h1>
+    <nav>
+        <a th:href="@{/}">Trang chủ</a>
+        <a th:href="@{/students}">Sinh viên</a>
+        <a th:href="@{/courses}">Môn học</a>
+    </nav>
+</header>
+<div class="container">
+    <div class="card">
+        <form th:action="@{/courses/save}" th:object="${course}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+
+            <div class="form-group">
+                <label>Mã môn học</label>
+                <input type="text" th:field="*{courseCode}"/>
+                <div class="error" th:if="${#fields.hasErrors('courseCode')}" th:errors="*{courseCode}"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Tên môn học</label>
+                <input type="text" th:field="*{courseName}"/>
+                <div class="error" th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Số tín chỉ</label>
+                <input type="number" th:field="*{credits}" min="1"/>
+                <div class="error" th:if="${#fields.hasErrors('credits')}" th:errors="*{credits}"></div>
+            </div>
+
+            <button class="btn" type="submit">Lưu</button>
+            <a class="btn btn-light" th:href="@{/courses}">Hủy</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
