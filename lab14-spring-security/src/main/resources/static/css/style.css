@@ -1,0 +1,102 @@
+:root {
+    --bg: #f5f6f8;
+    --panel: #ffffff;
+    --ink: #1f2430;
+    --muted: #6b7280;
+    --line: #dfe3ea;
+    --brand: #1f4e8c;
+    --danger: #b3261e;
+    --ok: #1b6b3a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+}
+
+.topbar {
+    background: var(--brand);
+    color: #fff;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+.brand { font-weight: 700; letter-spacing: .3px; }
+.spacer { margin-left: auto; }
+
+.container {
+    max-width: 960px;
+    margin: 28px auto;
+    padding: 0 20px;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 22px;
+}
+
+h1 { font-size: 1.5rem; margin-top: 0; }
+h2 { font-size: 1.15rem; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th, td {
+    border-bottom: 1px solid var(--line);
+    padding: 10px 8px;
+    text-align: left;
+}
+
+th { background: #eef1f6; font-weight: 600; }
+
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border: 1px solid var(--brand);
+    background: var(--brand);
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: .95rem;
+}
+
+.btn.secondary { background: #fff; color: var(--brand); }
+.btn.danger { background: var(--danger); border-color: var(--danger); }
+.btn:hover { opacity: .9; }
+
+form.inline { display: inline; }
+
+label { display: block; margin-top: 12px; font-weight: 600; font-size: .93rem; }
+
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    max-width: 360px;
+    padding: 9px 10px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.alert { padding: 10px 14px; border-radius: 6px; margin-bottom: 14px; }
+.alert.error { background: #fdecea; color: var(--danger); }
+.alert.ok { background: #e7f4ec; color: var(--ok); }
+
+.muted { color: var(--muted); font-size: .9rem; }
+.login-box { max-width: 400px; margin: 60px auto; }
+.field-error { color: var(--danger); font-size: .85rem; }

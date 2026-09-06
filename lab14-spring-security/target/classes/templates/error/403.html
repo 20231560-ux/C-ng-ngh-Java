@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Không đủ quyền - Lab 14</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/layout :: topbar}"></div>
+
+<div class="container">
+    <div class="panel">
+        <h1>403 - Bạn không có quyền vào trang này</h1>
+        <p sec:authorize="isAuthenticated()">
+            Tài khoản <b sec:authentication="name"></b> đang đăng nhập với quyền
+            <span sec:authentication="principal.authorities"></span>,
+            chưa đủ để mở chức năng vừa yêu cầu.
+        </p>
+        <p>Đăng nhập bằng tài khoản ADMIN nếu bạn cần thao tác thêm, sửa, xóa dữ liệu.</p>
+        <p>
+            <a class="btn" th:href="@{/students}">Về danh sách sinh viên</a>
+            <a class="btn secondary" th:href="@{/}">Về trang chủ</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

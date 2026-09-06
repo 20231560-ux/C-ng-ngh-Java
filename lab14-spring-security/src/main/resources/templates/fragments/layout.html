@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<!-- Bài 5 + Bài 8: menu hiển thị khác nhau theo vai trò -->
+<div th:fragment="topbar" class="topbar">
+    <span class="brand">Lab 14 · Spring Security</span>
+    <a th:href="@{/}">Trang chủ</a>
+    <a th:href="@{/about}">Giới thiệu</a>
+
+    <a sec:authorize="isAuthenticated()" th:href="@{/students}">Sinh viên</a>
+
+    <!-- Chỉ ADMIN thấy mục Học phần -->
+    <a sec:authorize="hasRole('ADMIN')" th:href="@{/courses}">Học phần</a>
+
+    <span class="spacer"></span>
+
+    <span sec:authorize="isAuthenticated()">
+        Xin chào <b sec:authentication="name">tên</b>
+        (<span sec:authentication="principal.authorities">quyền</span>)
+    </span>
+
+    <form sec:authorize="isAuthenticated()" class="inline" th:action="@{/logout}" method="post">
+        <button class="btn secondary" type="submit">Đăng xuất</button>
+    </form>
+
+    <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Đăng nhập</a>
+</div>
+
+</body>
+</html>

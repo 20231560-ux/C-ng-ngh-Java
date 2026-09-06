@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập - Lab 14</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/layout :: topbar}"></div>
+
+<div class="container">
+    <div class="panel login-box">
+        <h1>Đăng nhập</h1>
+
+        <div th:if="${param.error}" class="alert error">Sai tên đăng nhập hoặc mật khẩu.</div>
+        <div th:if="${param.logout}" class="alert ok">Bạn đã đăng xuất.</div>
+
+        <form th:action="@{/login}" method="post">
+            <label for="username">Tên đăng nhập</label>
+            <input type="text" id="username" name="username" autofocus required>
+
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" name="password" required>
+
+            <p><button class="btn" type="submit">Đăng nhập</button></p>
+        </form>
+
+        <p class="muted">Thử với admin/123456 hoặc user/123456.</p>
+    </div>
+</div>
+</body>
+</html>

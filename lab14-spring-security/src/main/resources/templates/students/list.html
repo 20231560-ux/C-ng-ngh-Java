@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sinh viên - Lab 14</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/layout :: topbar}"></div>
+
+<div class="container">
+    <div class="panel">
+        <h1>Danh sách sinh viên</h1>
+
+        <div th:if="${message}" class="alert ok" th:text="${message}"></div>
+
+        <!-- Bài 5: chỉ ADMIN thấy nút thêm -->
+        <div sec:authorize="hasRole('ADMIN')">
+            <a class="btn" th:href="@{/students/create}">Thêm sinh viên</a>
+        </div>
+        <p sec:authorize="!hasRole('ADMIN')" class="muted">
+            Tài khoản của bạn chỉ được xem danh sách.
+        </p>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Mã SV</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Lớp</th>
+                <th sec:authorize="hasRole('ADMIN')">Thao tác</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="s : ${students}">
+                <td th:text="${s.code}"></td>
+                <td th:text="${s.fullName}"></td>
+                <td th:text="${s.email}"></td>
+                <td th:text="${s.className}"></td>
+                <td sec:authorize="hasRole('ADMIN')">
+                    <a class="btn secondary" th:href="@{/students/edit/{id}(id=${s.id})}">Sửa</a>
+                    <!-- Bài 9: xóa chỉ dành cho ADMIN -->
+                    <form class="inline" th:action="@{/students/delete/{id}(id=${s.id})}" method="post"
+                          onsubmit="return confirm('Xóa sinh viên này?');">
+                        <button class="btn danger" type="submit">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(students)}">
+                <td colspan="5">Chưa có sinh viên nào.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Giới thiệu - Lab 14</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/layout :: topbar}"></div>
+
+<div class="container">
+    <div class="panel">
+        <h1>Giới thiệu</h1>
+        <p>Ứng dụng minh họa Spring Security trong học phần Công nghệ Java (IT3242):
+           đăng nhập, đăng xuất, phân quyền URL theo vai trò và ẩn/hiện chức năng bằng Thymeleaf Security.</p>
+        <p class="muted">Trang này nằm trong danh sách URL công khai nên không cần đăng nhập.</p>
+    </div>
+</div>
+</body>
+</html>

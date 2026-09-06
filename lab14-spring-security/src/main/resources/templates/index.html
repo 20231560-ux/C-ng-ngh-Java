@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ - Lab 14</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/layout :: topbar}"></div>
+
+<div class="container">
+    <div class="panel">
+        <h1>Bảo mật ứng dụng với Spring Security</h1>
+        <p th:if="${param.logout}" class="alert ok">Bạn đã đăng xuất.</p>
+        <p>Đây là trang công khai, ai cũng truy cập được mà không cần đăng nhập.</p>
+
+        <h2>Tài khoản kiểm thử</h2>
+        <table>
+            <tr><th>Tài khoản</th><th>Mật khẩu</th><th>Vai trò</th><th>Được làm gì</th></tr>
+            <tr><td>admin</td><td>123456</td><td>ADMIN</td><td>Xem, thêm, sửa, xóa sinh viên; xem học phần</td></tr>
+            <tr><td>user</td><td>123456</td><td>USER</td><td>Chỉ xem danh sách sinh viên</td></tr>
+        </table>
+
+        <p style="margin-top:20px">
+            <a class="btn" sec:authorize="!isAuthenticated()" th:href="@{/login}">Đăng nhập</a>
+            <a class="btn" sec:authorize="isAuthenticated()" th:href="@{/students}">Vào danh sách sinh viên</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Học phần - Lab 14</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{fragments/layout :: topbar}"></div>
+
+<div class="container">
+    <div class="panel">
+        <h1>Danh sách học phần</h1>
+        <p class="muted">Bài 6: toàn bộ đường dẫn /courses/** chỉ ADMIN mới vào được.</p>
+
+        <table>
+            <thead>
+            <tr><th>Mã học phần</th><th>Tên học phần</th><th>Số tín chỉ</th></tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${courses}">
+                <td th:text="${c.code}"></td>
+                <td th:text="${c.name}"></td>
+                <td th:text="${c.credits}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
