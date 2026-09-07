@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form môn học</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav><div class="brand">LAB 15</div><div class="nav-links"><a href="/courses">← Danh sách môn học</a></div></nav>
+<main class="container narrow">
+    <h1 th:text="${course.id == null ? 'Thêm môn học' : 'Sửa môn học'}"></h1>
+    <form class="panel form-grid" th:action="@{/courses/save}" th:object="${course}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label>Mã môn học</label><input th:field="*{courseCode}">
+        <div class="field-error" th:errors="*{courseCode}"></div>
+        <label>Tên môn học</label><input th:field="*{courseName}">
+        <div class="field-error" th:errors="*{courseName}"></div>
+        <label>Số tín chỉ</label><input type="number" min="1" th:field="*{credits}">
+        <div class="field-error" th:errors="*{credits}"></div>
+        <div class="actions"><button class="btn primary" type="submit">Lưu</button><a class="btn" href="/courses">Hủy</a></div>
+    </form>
+</main>
+</body>
+</html>

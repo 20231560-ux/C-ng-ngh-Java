@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Môn học</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+    <div class="brand">LAB 15</div>
+    <div class="nav-links">
+        <a href="/dashboard">Dashboard</a><a href="/students">Sinh viên</a>
+        <a href="/courses">Môn học</a><a href="/enrollments">Đăng ký học phần</a>
+        <form th:action="@{/logout}" method="post" class="logout-form"><button type="submit">Đăng xuất</button></form>
+    </div>
+</nav>
+<main class="container">
+    <div class="page-head"><h1>Quản lý môn học</h1><a class="btn primary" href="/courses/create">+ Thêm môn học</a></div>
+    <div class="alert success" th:if="${success}" th:text="${success}"></div>
+    <div class="alert error" th:if="${error}" th:text="${error}"></div>
+    <form class="search" method="get" action="/courses">
+        <input name="keyword" th:value="${keyword}" placeholder="Tìm theo mã hoặc tên môn học">
+        <button class="btn" type="submit">Tìm kiếm</button>
+        <a class="btn" href="/courses">Xóa tìm kiếm</a>
+    </form>
+    <table>
+        <thead><tr><th>ID</th><th>Mã môn</th><th>Tên môn học</th><th>Tín chỉ</th><th>Thao tác</th></tr></thead>
+        <tbody>
+        <tr th:each="c : ${courses}">
+            <td th:text="${c.id}"></td><td th:text="${c.courseCode}"></td><td th:text="${c.courseName}"></td><td th:text="${c.credits}"></td>
+            <td>
+                <a class="btn small" th:href="@{/courses/edit/{id}(id=${c.id})}">Sửa</a>
+                <a class="btn small danger" th:href="@{/courses/delete/{id}(id=${c.id})}" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(courses)}"><td colspan="5" class="empty">Chưa có dữ liệu.</td></tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký học phần</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav><div class="brand">LAB 15</div><div class="nav-links"><a href="/enrollments">← Danh sách đăng ký</a></div></nav>
+<main class="container narrow">
+    <h1>Đăng ký học phần</h1>
+    <form class="panel form-grid" th:action="@{/enrollments/save}" method="post">
+        <label>Sinh viên</label>
+        <select name="studentId" required>
+            <option value="">-- Chọn sinh viên --</option>
+            <option th:each="s : ${students}" th:value="${s.id}" th:text="${s.studentCode + ' - ' + s.fullName}"></option>
+        </select>
+        <label>Môn học</label>
+        <select name="courseId" required>
+            <option value="">-- Chọn môn học --</option>
+            <option th:each="c : ${courses}" th:value="${c.id}" th:text="${c.courseCode + ' - ' + c.courseName + ' (' + c.credits + ' tín chỉ)'}"></option>
+        </select>
+        <div class="actions"><button class="btn primary" type="submit">Đăng ký</button><a class="btn" href="/enrollments">Hủy</a></div>
+    </form>
+</main>
+</body>
+</html>

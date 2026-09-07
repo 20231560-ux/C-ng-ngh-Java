@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form sinh viên</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav><div class="brand">LAB 15</div><div class="nav-links"><a href="/students">← Danh sách sinh viên</a></div></nav>
+<main class="container narrow">
+    <h1 th:text="${student.id == null ? 'Thêm sinh viên' : 'Sửa sinh viên'}"></h1>
+    <form class="panel form-grid" th:action="@{/students/save}" th:object="${student}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label>Mã sinh viên</label>
+        <input th:field="*{studentCode}">
+        <div class="field-error" th:errors="*{studentCode}"></div>
+        <label>Họ tên</label>
+        <input th:field="*{fullName}">
+        <div class="field-error" th:errors="*{fullName}"></div>
+        <label>Email</label>
+        <input th:field="*{email}">
+        <div class="field-error" th:errors="*{email}"></div>
+        <label>Số điện thoại</label>
+        <input th:field="*{phone}">
+        <div class="actions">
+            <button class="btn primary" type="submit">Lưu</button>
+            <a class="btn" href="/students">Hủy</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

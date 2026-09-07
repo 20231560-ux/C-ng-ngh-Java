@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Môn đã đăng ký</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav><div class="brand">LAB 15</div><div class="nav-links"><a href="/students">← Sinh viên</a></div></nav>
+<main class="container">
+    <h1>Môn học đã đăng ký</h1>
+    <div class="panel">
+        <b>Sinh viên:</b> <span th:text="${student.studentCode + ' - ' + student.fullName}"></span>
+    </div>
+    <table>
+        <thead><tr><th>Mã môn</th><th>Tên môn</th><th>Tín chỉ</th><th>Ngày đăng ký</th></tr></thead>
+        <tbody>
+        <tr th:each="e : ${enrollments}">
+            <td th:text="${e.course.courseCode}"></td><td th:text="${e.course.courseName}"></td>
+            <td th:text="${e.course.credits}"></td><td th:text="${e.enrollDate}"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(enrollments)}"><td colspan="4" class="empty">Sinh viên chưa đăng ký môn học nào.</td></tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

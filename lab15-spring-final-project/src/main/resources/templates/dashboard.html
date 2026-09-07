@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Lab 15</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav>
+    <div class="brand">LAB 15 - SPRING FRAMEWORK</div>
+    <div class="nav-links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/students">Sinh viên</a>
+        <a href="/courses">Môn học</a>
+        <a href="/enrollments">Đăng ký học phần</a>
+        <form th:action="@{/logout}" method="post" class="logout-form">
+            <button type="submit">Đăng xuất</button>
+        </form>
+    </div>
+</nav>
+
+<main class="container">
+    <h1>Dashboard</h1>
+    <p>Tổng quan hệ thống quản lý sinh viên và đăng ký học phần.</p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Tổng sinh viên</h3>
+            <strong th:text="${studentCount}">0</strong>
+        </div>
+        <div class="card">
+            <h3>Tổng môn học</h3>
+            <strong th:text="${courseCount}">0</strong>
+        </div>
+        <div class="card">
+            <h3>Tổng lượt đăng ký</h3>
+            <strong th:text="${enrollmentCount}">0</strong>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Chức năng</h2>
+        <p>CRUD sinh viên, CRUD môn học, đăng ký/hủy học phần, xem môn đã đăng ký và đăng nhập phân quyền.</p>
+    </div>
+</main>
+</body>
+</html>
